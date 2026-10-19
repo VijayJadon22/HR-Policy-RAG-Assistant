@@ -1,0 +1,17 @@
+[project]
+name = "hr-policy-rag-assistant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Vijay Jadon", email = "vijaypratapsinghjadon22@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+hr-policy-rag-assistant = "hr_policy_rag_assistant:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"
