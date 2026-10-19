@@ -2,6 +2,7 @@
 
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
@@ -10,9 +11,10 @@ groq_key = os.getenv("GROQ_API_KEY")
 jina_key = os.getenv("JINA_API_KEY")
 
 # Define Path / Vector Store
-DATA_FILE_PATH = os.path.join("data", "hr_policy.txt")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = PROJECT_ROOT / "data"
 
-VECTOR_STORE_PATH = os.path.join("data", "faiss_index")
+VECTOR_STORE_PATH = DATA_DIR / "faiss_index"
 
 # LLM and Embedding Model
 LLM_MODEL_NAME = "openai/gpt-oss-20b"

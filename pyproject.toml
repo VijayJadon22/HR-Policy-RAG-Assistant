@@ -7,7 +7,9 @@ authors = [
     { name = "Vijay Jadon", email = "vijaypratapsinghjadon22@gmail.com" }
 ]
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "pypdf>=6.21.1",
+]
 
 [project.scripts]
 hr-policy-rag-assistant = "hr_policy_rag_assistant:main"
