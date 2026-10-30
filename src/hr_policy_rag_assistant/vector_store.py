@@ -3,6 +3,7 @@
 from langchain_community.vectorstores import FAISS
 from hr_policy_rag_assistant.config import VECTOR_STORE_PATH
 from hr_policy_rag_assistant.embeddings import get_embeddings_model
+import os
 
 
 def build_vector_store(chunks):
@@ -22,3 +23,8 @@ def load_vector_store(path: str = VECTOR_STORE_PATH):
     return FAISS.load_local(
         path, embeddings_model, allow_dangerous_deserialization=True
     )
+
+
+def vector_store_exists(path: str = VECTOR_STORE_PATH) -> bool:
+    """Check if a saved FAISS index already exists in the disk."""
+    return os.path.exists(os.path.join(path, "index.faiss"))
