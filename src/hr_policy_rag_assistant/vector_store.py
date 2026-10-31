@@ -14,7 +14,7 @@ def build_vector_store(chunks):
 
 
 def save_vector_store(vector_store, path: str = VECTOR_STORE_PATH) -> None:
-    """Save the FAISS indexto index so that we dont have to load it every time"""
+    """Save the FAISS index to disk so that we dont have to load it every time"""
     vector_store.save_local(path)
 
 

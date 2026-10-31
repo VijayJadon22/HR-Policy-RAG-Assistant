@@ -7,6 +7,7 @@ from hr_policy_rag_assistant.config import DATA_DIR
 from hr_policy_rag_assistant.config import LLM_MODEL_NAME
 from hr_policy_rag_assistant.agent import create_hr_agent
 from hr_policy_rag_assistant.document_loader import load_all_documents
+from hr_policy_rag_assistant.splitter import split_documents
 from hr_policy_rag_assistant.vector_store import (
     build_vector_store,
     save_vector_store,
@@ -23,4 +24,10 @@ def build_vector_store_for_documents(file_path: str = DATA_DIR):
         return load_vector_store()
     print("No vector store found, building one from scratch.")
     documents = load_all_documents()
-    
+    chunks = split_documents(documents)
+    print(f"Loaded '{file_path}' and split into {len(chunks)} chunks.")
+
+    vector_store = build_vector_store(chunks)
+    save_vector_store(vector_store)
+    print("Vector store built and saved to disk for next time.")
+    return vector_store
