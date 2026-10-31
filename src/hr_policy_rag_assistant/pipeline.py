@@ -48,3 +48,7 @@ def build_hr_assistant(file_path: str = DATA_DIR):
     return agent
 
 
+def ask_agent(agent, question: str) -> str:
+    """Ask the agent a question and return its final answer as plain text."""
+    response = agent.invoke({"messages": [{"role": "user", "content": question}]})
+    return response["messages"][-1].content
